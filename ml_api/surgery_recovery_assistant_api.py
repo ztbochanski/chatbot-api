@@ -16,14 +16,16 @@ stemmed_words = reader.get_stemmed_words()
 labels = reader.get_labels()
 
 app = Flask(__name__)
-socketIo = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 
-@socketIo.on('message')
-def handleMessage(msg):
-    print(msg)
-    send(msg, broadcast=True)
-    return msg
+@socketio.on('message')
+def handle_message(data):
+    print('received message: ' + data)
+
+# @socketio.on('message')
+# def handle_message(message):
+#     send(message)
 
 
 @app.route("/surgery-recovery/api/v1.0/assistant", methods=['POST'])
