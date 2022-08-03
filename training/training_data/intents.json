@@ -1,0 +1,83 @@
+{"intents": [
+  {"tag": "greeting",
+   "patterns": ["Hello", "How is it going?", "Is someone there?", "Is anyone there?", "Good day", "What's up?", "How is it going?", "Greetings"],
+   "responses": ["Hello, thanks for asking", "Hi, how can I help?", "Hi, I am here to assist", "Good to see you again", "Hi there, how can I help?"],
+   "context": [""]
+  },
+  {"tag": "goodbye",
+   "patterns": ["Until next time", "See you later", "Goodbye", "Bye", "Nice chatting to you, goodbye" ],
+   "responses": ["See you!", "See you! Come back again soon.", "Have a nice day" ],
+   "context": [""]
+  },
+  {"tag": "thanks",
+   "patterns": ["Thanks", "Much appreciated", "Thank you", "That's helpful", "Awesome, thanks", "Cool! Thank you", "Thanks for helping me"],
+   "responses": ["My pleasure", "Happy to help!", "No problem", "Any time!"],
+   "context": [""]
+  },
+  {"tag": "noanswer",
+   "patterns": [],
+   "responses": ["Not sure I understand", "Sorry, I can't understand this request", "I need more information", "Please give me more info", "Can you try asking another way?"],
+   "context": [""]
+  },
+  {"tag": "options",
+   "patterns": ["What you can do?", "How you could help me?", "What do you do?", "What help you provide?", "What can you provide?", "How you can be helpful?", "How do you use this?", "What support is offered"],
+   "responses": ["I can give you post-surgery recovery guidance, medication help, pharmacy and surgery center locations, and medical records"],
+   "context": [""]
+  },
+  {"tag": "records_help",
+   "patterns": ["Open my records", "Tasks related to records", "View my records", "I want get my records", "Print my records", "Email my records", "How do I get my records?", "Send me my records" ],
+   "responses": ["What is your ID?",  "Patient ID?", "Provide Patient ID"],
+   "context": [""]
+  },
+  {"tag": "search_records_by_patient_id",
+   "patterns": [],
+   "responses": ["Loading your records"],
+   "context": [""]
+  },
+  {"tag": "recovery_help",
+   "patterns": ["Open recovery directions", "What can I expect during recover", "Recovery expectations", "How to recover?", "What should I do to recover?", "When can I take off my bandage?", "When can I take a shower?", "How do I know if there is an infection?", "What if I have numbness?", "I have nerve pain", "I have numbness", "How do I best recover?", "Which drugs are safe?" ],
+   "responses": ["Navigating to recovery help"],
+   "context": [""]
+  },
+  {"tag": "medication_help",
+   "patterns": ["Open drug reactions", "Give me drugs causing bad reactions", "List all drugs suitable for this surgery", "Which drugs are safe?", "I want to search for drug history", "My current drugs", "What are my medications?", "How do I use my medications?", "What are my medication instructions?", "My current drug instructions", "How to use my drugs", "Find drugs", "What are my drug doses?", "Find my drugs", "How to use" ],
+   "responses": ["What is your ID?",  "Patient ID?", "Provide Patient ID"],
+   "context": ["search_medications_by_patient_id"]
+  },
+  {"tag": "search_medications_by_patient_id",
+   "patterns": [],
+   "responses": ["Loading your medication information"],
+   "context": [""]
+  },
+  {"tag": "pharmacy_search",
+   "patterns": ["Locate pharmacy", "Get pharmacy directions", "List of pharmacies nearby", "Where can I get my medications?", "Search pharmacy", "where can I get drugs?", "Find me a pharmacy", "Find pharmacy", "My pharmacy" ],
+   "responses": ["Enter a pharmacy name or location"],
+   "context": ["search_pharmacy_by_params"]
+  },
+  {"tag": "search_pharmacy_by_params",
+   "patterns": [],
+   "responses": ["Loading pharmacy information"],
+   "context": [""]
+  },
+  {"tag": "surgery_center_search",
+   "patterns": ["Surgery center information", "Surgery center details", "Lookup for surgery center", "Looking up surgery center details", "Searching for surgery center" ],
+   "responses": ["Provide surgery center name or location"],
+   "context": ["search_surgery_center_by_params"]
+  },
+  {"tag": "search_surgery_center_by_params",
+   "patterns": [],
+   "responses": ["Please provide surgery center specialties"],
+   "context": ["search_surgery_center_by_specialties"]
+  },
+  {"tag": "search_surgery_center_by_specialties",
+   "patterns": [],
+   "responses": ["Loading surgery center information"],
+   "context": [""]
+  },
+  {"tag": "vitals",
+   "patterns": ["Open my vitals", "Task related to vitals", "Vitals data entry", "I want to log vitals", "Vital data management" ],
+   "responses": ["Navigating to Vitals Dashboard"],
+   "context": [""]
+  }
+]
+}
