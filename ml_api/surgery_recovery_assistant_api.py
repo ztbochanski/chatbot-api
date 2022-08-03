@@ -16,7 +16,7 @@ stemmed_words = reader.get_stemmed_words()
 labels = reader.get_labels()
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins='*')
 
 
 @socketio.on('message')
@@ -48,4 +48,4 @@ def predict_intent():
 
 
 if __name__ == '__main__':
-    socketIo.run(app, host='0.0.0.0', port=3000, use_reloader=True)
+    socketio.run(app, host='0.0.0.0', port=5000, use_reloader=True)
