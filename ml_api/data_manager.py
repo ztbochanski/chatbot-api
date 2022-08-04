@@ -1,4 +1,5 @@
 import json
+import random
 
 
 class Corpus:
@@ -15,25 +16,18 @@ class Corpus:
             tags.append(entity['tag'])
         return tags
 
-    def patterns(self):
-        patterns = []
+    def responses(self, tag):
         for entity in self.intents['intents']:
-            patterns.append(entity['patterns'])
-        return patterns
+            if entity['tag'] == tag:
+                return entity['responses']
 
-    def responses(self):
-        responses = []
-        for entity in self.intents['intents']:
-            responses.append(entity['responses'])
-        return responses
-
-    def context(self):
-        context = []
-        for entity in self.intents['intents']:
-            context.append(entity['context'])
-        return context
+    def random_response(self, tag):
+        responses = self.responses(tag)
+        random_number = random.randint(0, len(responses)-1)
+        response = responses[random_number]
+        return response
 
 
 if __name__ == '__main__':
     corpus = Corpus(directory='training/training_data/intents.json')
-    print(corpus.context())
+    print(corpus.random_response('pharmacy_search'))
