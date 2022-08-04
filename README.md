@@ -1,10 +1,19 @@
 # surgery-recovery-assistant-api
 
+This purpose of this project is to build an 
+## Architecture
+
 ```
 surgery-recovery-assistant-api
 │   README.md
 │      
-└───api
+└───chat_server
+│   │   ...
+│    
+└───chat-client
+│   │   ...
+│    
+└───learning_model_server
 │   │   ...
 │    
 └───tests
@@ -16,6 +25,7 @@ surgery-recovery-assistant-api
 
 ## Table of contents
 - [surgery-recovery-assistant-api](#surgery-recovery-assistant-api)
+  - [Architecture](#architecture)
   - [Table of contents](#table-of-contents)
   - [Tools](#tools)
   - [Training the Agent](#training-the-agent)

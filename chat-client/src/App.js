@@ -8,7 +8,7 @@ const App = () => {
   const [socket, setSocket] = useState(null)
   const [value, setValue] = useState('')
   const [context, setContext] = useState('')
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState(['Hi, how can I help you today?'])
 
   useEffect(() => {
     const newSocket = io(`http://localhost:5001`)
@@ -62,6 +62,9 @@ const App = () => {
                     </h1>
                   </div>
                 </div>
+                <div className="level-item has-text-centered">
+                  
+                </div>
               </div>
 
             </div>
@@ -70,29 +73,19 @@ const App = () => {
         </div>
 
         <div className="hero-body">
-          
           <div style={{ height: '100%', width: '100%' }}>
             
             {messages.map((message, i) => {
               const msgClass = i === 0 || i % 2 === 0
               return (
-                <p style={{ padding: '.25em', textAlign: msgClass ? 'left' : 'right', overflowWrap: 'normal' }}>
-                  <span key={i} className={`tag is-medium ${msgClass ? 'is-success' : 'is-info'}`}>{message}</span>
+                <p key={i} style={{ padding: '.25em', textAlign: msgClass ? 'left' : 'right', overflowWrap: 'normal' }}>
+                  <span  className={`tag is-medium ${msgClass ? 'is-success' : 'is-info'}`}>{message}</span>
                 </p>
               )}
             )}
 
           </div>
-
-
-          <div className="level-item has-text-centered">
-            <div>
-              <figure className="image">
-                <img src={logo} className="App-logo" alt="logo" />
-              </figure>
-              </div>
-            </div>
-          </div>
+        </div>
 
         <div className="hero-foot">
           <footer className="section is-small">
