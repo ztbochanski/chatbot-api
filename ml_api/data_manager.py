@@ -10,12 +10,6 @@ class Corpus:
             intents = json.load(data)
         self.intents = intents
 
-    def tags(self):
-        tags = []
-        for entity in self.intents['intents']:
-            tags.append(entity['tag'])
-        return tags
-
     def responses(self, tag):
         for entity in self.intents['intents']:
             if entity['tag'] == tag:
