@@ -1,4 +1,4 @@
-from ml_api.input_parser import Encoder
+from learning_model_server.input_parser import Encoder
 import pandas as pd
 import pickle
 
