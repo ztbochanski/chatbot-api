@@ -1,6 +1,6 @@
 # surgery-recovery-assistant-api
 
-This purpose of this project is to build an 
+This purpose of this project is to build a machine learning model that can predict a user's intent to give a conversation a context.
 ## Architecture
 
 ```
