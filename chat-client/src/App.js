@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-import logo from './logo.svg'
 import 'bulma/css/bulma.min.css'
 
 const App = () => {
