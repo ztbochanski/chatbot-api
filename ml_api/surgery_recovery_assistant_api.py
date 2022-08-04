@@ -1,7 +1,9 @@
+from flask_cors import CORS
 from input_parser import Encoder, Reader
 from intent_predictor import Predictor
+from data_manager import Corpus
 from flask import Flask, jsonify, request
-from flask_socketio import SocketIO, send
+from flask_cors import CORS
 
 PREDICTION_BUFFER = .2
 DATA_PATH = 'training/training_data/surgery-recovery-assistant-data.pkl'
@@ -16,23 +18,21 @@ stemmed_words = reader.get_stemmed_words()
 labels = reader.get_labels()
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins='*')
+CORS(app)
 
 
-@socketio.on('message')
-def handle_message(data):
-    print('received message: ' + data)
+@app.route('/surgery-recovery/api/v1.0/random_reply', methods=['POST'])
+def random_reply():
+    data = request.get_json()
+    tag = data['tag']
+    corpus = Corpus(directory='training/training_data/intents.json')
+    return jsonify(corpus.random_response(tag))
 
-# @socketio.on('message')
-# def handle_message(message):
-#     send(message)
 
-
-@app.route("/surgery-recovery/api/v1.0/assistant", methods=['POST'])
+@app.route('/surgery-recovery/api/v1.0/predict_intent', methods=['POST'])
 def predict_intent():
-
-    user_data = request.get_json()
-    user_input = user_data['input']
+    data = request.get_json()
+    user_input = data['input']
 
     encoder = Encoder()
     encoded_user_input = encoder.encode_input(user_input, stemmed_words)
@@ -48,4 +48,4 @@ def predict_intent():
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5000, use_reloader=True)
+    app.run(host='0.0.0.0', port=5000)
