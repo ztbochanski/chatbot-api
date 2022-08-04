@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask
 from flask_socketio import SocketIO
 import requests
 
@@ -12,40 +12,21 @@ socketio = SocketIO(app, cors_allowed_origins='*')
 
 @socketio.on('client event')
 def handle_client_event(json, methods=['GET', 'POST']):
-    print('received client event: ' + str(json))
 
-    if not json['context']:
+    assistant_http_response = requests.post('http://' + DOMAIN + ':' + PORT + '/surgery-recovery/api/v1.0/predict_intent', json={
+        'input': json['message']
+    })
+    predicted_intent = assistant_http_response.json()[0]['intent']
 
-        assistant_http_response = requests.post('http://' + DOMAIN + ':' + PORT + '/surgery-recovery/api/v1.0/predict_intent', json={
-            'input': json['message']
-        })
-        predicted_intent = assistant_http_response.json()[0]['intent']
+    random_reply_http_response = requests.post('http://' + DOMAIN + ':' + PORT + '/surgery-recovery/api/v1.0/random_reply', json={
+        'tag': predicted_intent
+    })
+    random_reply_message = random_reply_http_response.json()
 
-        random_reply_http_response = requests.post('http://' + DOMAIN + ':' + PORT + '/surgery-recovery/api/v1.0/random_reply', json={
-            'tag': predicted_intent
-        })
-        random_reply_message = random_reply_http_response.json()
-
-        socketio.emit('server event', {
-            'context': predicted_intent,
-            'message': random_reply_message
-        })
-    else:
-        random_reply_http_response = requests.post('http://' + DOMAIN + ':' + PORT + '/surgery-recovery/api/v1.0/random_reply', json={
-            'tag': json['context']
-        })
-        print('context exists:', json['context'])
-        random_reply_message = random_reply_http_response.json()
-
-        socketio.emit('server event', {
-            'context': json['context'],
-            'message': random_reply_message
-        })
-
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
+    socketio.emit('server event', {
+        'context': predicted_intent,
+        'message': random_reply_message
+    })
 
 
 if __name__ == '__main__':
