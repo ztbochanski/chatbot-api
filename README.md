@@ -1,5 +1,41 @@
 # surgery-recovery-assistant-api
 
+## Installation
+
+1. Clone the repo
+   
+  - Install python packages
+2. ```zsh
+   pip install requirements.txt
+   ```
+
+  - Start model server
+3. ```zsh
+   python learning_model_server/surgery_recovery_assistant_api.py
+   ```
+  
+  - Start chat (assistant) server
+4. ```zsh
+   python chat_server/surgery_recover_chat_server.py
+   ```
+
+  - Go to chat client
+5. ```zsh
+   cd chat-client
+   ```
+
+  - Install node packages
+6. ```zsh
+   npm install
+   ```
+
+  - Run the client demo server
+7. ```zsh
+   npm start
+   ```
+
+8. Open client app interface in browser on localhost port 3000
+   
 This purpose of this project is to build a machine learning model that can predict a user's intent to give a conversation a context.
 ## Architecture
 
@@ -25,6 +61,7 @@ surgery-recovery-assistant-api
 
 ## Table of contents
 - [surgery-recovery-assistant-api](#surgery-recovery-assistant-api)
+  - [Installation](#installation)
   - [Architecture](#architecture)
   - [Table of contents](#table-of-contents)
   - [Tools](#tools)
